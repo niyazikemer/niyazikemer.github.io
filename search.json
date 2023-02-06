@@ -4,14 +4,7 @@
     "href": "index.html",
     "title": "niyazikemer.github.io",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nTiny bug world with neuro evolution (2018)\n\n\n\n\n\n\n\nneuro evolution\n\n\n\n\n\n\n\n\n\n\n\nJan 15, 2022\n\n\nNiyazi Kemer\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -19,6 +12,13 @@
     "title": "Post With Code",
     "section": "",
     "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/myfirstNN/2022-01-15-myFirstNN.html",
+    "href": "posts/myfirstNN/2022-01-15-myFirstNN.html",
+    "title": "Tiny bug world with neuro evolution (2018)",
+    "section": "",
+    "text": "This is from 2018, tutorials and trainings aside my first attempt for training a neural network. It does not have a traditional loss function or optimization method but it uses neuroevolution for training. I use p5.JS for the visualization and tensorflow.JS for the model.\nGithub Link is here"
   },
   {
     "objectID": "about.html",
