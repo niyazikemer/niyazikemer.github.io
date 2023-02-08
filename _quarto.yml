@@ -6,6 +6,9 @@ website:
   navbar:
     right:
       - about.qmd
+      - icon: mastodon
+        text: Mastodon
+        href: https://sigmoid.social/@niyazi
       - icon: github
         href: https://github.com/niyazikemer
       - icon: twitter
