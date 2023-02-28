@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://niyazikemer.github.io/index.html</loc>
-    <lastmod>2023-02-26T19:39:17.626Z</lastmod>
+    <lastmod>2023-02-28T10:08:49.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://niyazikemer.github.io/posts/course22p2/04_minibatch_training.html</loc>
+    <lastmod>2023-02-28T10:08:49.713Z</lastmod>
   </url>
   <url>
     <loc>https://niyazikemer.github.io/posts/course22p2/01_matmul.html</loc>
-    <lastmod>2023-02-26T19:39:17.954Z</lastmod>
+    <lastmod>2023-02-28T10:08:49.993Z</lastmod>
   </url>
   <url>
     <loc>https://niyazikemer.github.io/posts/course22p2/03_backprop.html</loc>
-    <lastmod>2023-02-26T19:39:18.158Z</lastmod>
+    <lastmod>2023-02-28T10:08:50.173Z</lastmod>
   </url>
   <url>
     <loc>https://niyazikemer.github.io/posts/course22p2/02_meanshift.html</loc>
-    <lastmod>2023-02-26T19:39:18.362Z</lastmod>
+    <lastmod>2023-02-28T10:08:50.361Z</lastmod>
   </url>
   <url>
     <loc>https://niyazikemer.github.io/posts/myfirstNN/2022-01-15-myFirstNN.html</loc>
-    <lastmod>2023-02-26T19:39:18.478Z</lastmod>
+    <lastmod>2023-02-28T10:08:50.469Z</lastmod>
   </url>
   <url>
     <loc>https://niyazikemer.github.io/about.html</loc>
-    <lastmod>2023-02-26T19:39:18.594Z</lastmod>
+    <lastmod>2023-02-28T10:08:50.581Z</lastmod>
   </url>
 </urlset>

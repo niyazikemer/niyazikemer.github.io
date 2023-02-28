@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/course22p2/04_minibatch_training.html",
       "/posts/course22p2/03_backprop.html",
       "/posts/course22p2/02_meanshift.html",
       "/posts/course22p2/01_matmul.html",
