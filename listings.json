@@ -2,6 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/course22p2/11_initializing.html",
+      "/posts/course22p2/10_activations.html",
+      "/posts/course22p2/09_learner.html",
+      "/posts/course22p2/08_autoencoder.html",
       "/posts/course22p2/07_convolutions.html",
       "/posts/course22p2/06_foundations.html",
       "/posts/course22p2/05_datasets.html",
