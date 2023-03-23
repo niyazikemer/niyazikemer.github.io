@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/course22p2/12_accel_sgd.html",
       "/posts/course22p2/11_initializing.html",
       "/posts/course22p2/10_activations.html",
       "/posts/course22p2/09_learner.html",
