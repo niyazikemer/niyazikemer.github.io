@@ -273,7 +273,7 @@ check the lesson 16 before check the code
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dsd <span class="op">=</span> load_dataset(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"6ca050462ee540518c7028378f76b22d","version_major":2,"version_minor":0}
+{"model_id":"5eb530a6fb7840559ded1d89a1bc386a","version_major":2,"version_minor":0}
 </script>
 </div>
 </div>
@@ -339,8 +339,8 @@ check the lesson 16 before check the code
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 True 1.1753045572916667 0.5986833333333333
-0 False 1.12032890625 0.6135285714285714</code></pre>
+<pre><code>0 True 1.1753063802083332 0.5986166666666667
+0 False 1.1203783482142857 0.6133857142857143</code></pre>
 </div>
 </div>
 </section>
@@ -478,67 +478,92 @@ check the lesson 16 before check the code
 </section>
 <section id="some-callbacks" class="level2">
 <h2 class="anchored" data-anchor-id="some-callbacks">Some callbacks</h2>
-<pre><code>pip install torcheval</code></pre>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+torcheval
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>pip install torcheval</code> check it if it is possible to use with the my project.</p>
+</div>
+</div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torcheval.metrics <span class="im">import</span> MulticlassAccuracy,Mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torcheval.metrics <span class="im">import</span> MulticlassAccuracy,Mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>metric <span class="op">=</span> MulticlassAccuracy()</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>metric.update(tensor([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]), tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>metric.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>metric <span class="op">=</span> MulticlassAccuracy()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>metric.update(tensor([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]), tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>metric.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>tensor(0.50)</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>metric.reset()</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>metric.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>metric.reset()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>metric.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>tensor(nan)</code></pre>
 </div>
 </div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+possible GPU bug.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jeremy says there may be a bug while using gpu for the metrics calculation thats the reason of <code>to_cpu</code> function exist.</p>
+</div>
+</div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_cpu(x):</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, Mapping): <span class="cf">return</span> {k:to_cpu(v) <span class="cf">for</span> k,v <span class="kw">in</span> x.items()}</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>): <span class="cf">return</span> [to_cpu(o) <span class="cf">for</span> o <span class="kw">in</span> x]</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">tuple</span>): <span class="cf">return</span> <span class="bu">tuple</span>(to_cpu(<span class="bu">list</span>(x)))</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x.detach().cpu()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_cpu(x):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, Mapping): <span class="cf">return</span> {k:to_cpu(v) <span class="cf">for</span> k,v <span class="kw">in</span> x.items()}</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>): <span class="cf">return</span> [to_cpu(o) <span class="cf">for</span> o <span class="kw">in</span> x]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">tuple</span>): <span class="cf">return</span> <span class="bu">tuple</span>(to_cpu(<span class="bu">list</span>(x)))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x.detach().cpu()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MetricsCB(Callback):</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">*</span>ms, <span class="op">**</span>metrics):</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> o <span class="kw">in</span> ms: metrics[<span class="bu">type</span>(o).<span class="va">__name__</span>] <span class="op">=</span> o</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.metrics <span class="op">=</span> metrics</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.all_metrics <span class="op">=</span> copy(metrics)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.all_metrics[<span class="st">'loss'</span>] <span class="op">=</span> <span class="va">self</span>.loss <span class="op">=</span> Mean()</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _log(<span class="va">self</span>, d): <span class="bu">print</span>(d)</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn): learn.metrics <span class="op">=</span> <span class="va">self</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_epoch(<span class="va">self</span>, learn): [o.reset() <span class="cf">for</span> o <span class="kw">in</span> <span class="va">self</span>.all_metrics.values()]</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_epoch(<span class="va">self</span>, learn):</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>        log <span class="op">=</span> {k:<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">.</span>compute()<span class="sc">:.3f}</span><span class="ss">'</span> <span class="cf">for</span> k,v <span class="kw">in</span> <span class="va">self</span>.all_metrics.items()}</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>        log[<span class="st">'epoch'</span>] <span class="op">=</span> learn.epoch</span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>        log[<span class="st">'train'</span>] <span class="op">=</span> <span class="st">'train'</span> <span class="cf">if</span> learn.model.training <span class="cf">else</span> <span class="st">'eval'</span></span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._log(log)</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>        x,y,<span class="op">*</span>_ <span class="op">=</span> to_cpu(learn.batch)</span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> m <span class="kw">in</span> <span class="va">self</span>.metrics.values(): m.update(to_cpu(learn.preds), y)</span>
-<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.loss.update(to_cpu(learn.loss), weight<span class="op">=</span><span class="bu">len</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MetricsCB(Callback):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">*</span>ms, <span class="op">**</span>metrics):</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> o <span class="kw">in</span> ms: metrics[<span class="bu">type</span>(o).<span class="va">__name__</span>] <span class="op">=</span> o</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.metrics <span class="op">=</span> metrics</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.all_metrics <span class="op">=</span> copy(metrics)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.all_metrics[<span class="st">'loss'</span>] <span class="op">=</span> <span class="va">self</span>.loss <span class="op">=</span> Mean()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _log(<span class="va">self</span>, d): <span class="bu">print</span>(d)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn): learn.metrics <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_epoch(<span class="va">self</span>, learn): [o.reset() <span class="cf">for</span> o <span class="kw">in</span> <span class="va">self</span>.all_metrics.values()]</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_epoch(<span class="va">self</span>, learn):</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>        log <span class="op">=</span> {k:<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">.</span>compute()<span class="sc">:.3f}</span><span class="ss">'</span> <span class="cf">for</span> k,v <span class="kw">in</span> <span class="va">self</span>.all_metrics.items()}</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>        log[<span class="st">'epoch'</span>] <span class="op">=</span> learn.epoch</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        log[<span class="st">'train'</span>] <span class="op">=</span> <span class="st">'train'</span> <span class="cf">if</span> learn.model.training <span class="cf">else</span> <span class="st">'eval'</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._log(log)</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>        x,y,<span class="op">*</span>_ <span class="op">=</span> to_cpu(learn.batch)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> m <span class="kw">in</span> <span class="va">self</span>.metrics.values(): m.update(to_cpu(learn.preds), y)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.loss.update(to_cpu(learn.loss), weight<span class="op">=</span><span class="bu">len</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeviceCB(Callback):</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, device<span class="op">=</span>def_device): fc.store_attr()</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(learn.model, <span class="st">'to'</span>): learn.model.to(<span class="va">self</span>.device)</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_batch(<span class="va">self</span>, learn): learn.batch <span class="op">=</span> to_device(learn.batch, device<span class="op">=</span><span class="va">self</span>.device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeviceCB(Callback):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, device<span class="op">=</span>def_device): fc.store_attr()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(learn.model, <span class="st">'to'</span>): learn.model.to(<span class="va">self</span>.device)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_batch(<span class="va">self</span>, learn): learn.batch <span class="op">=</span> to_device(learn.batch, device<span class="op">=</span><span class="va">self</span>.device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>[DeviceCB(), metrics])</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>[DeviceCB(), metrics])</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'accuracy': '0.602', 'loss': '1.183', 'epoch': 0, 'train': 'train'}
 {'accuracy': '0.700', 'loss': '0.847', 'epoch': 0, 'train': 'eval'}</code></pre>
@@ -547,99 +572,112 @@ check the lesson 16 before check the code
 </section>
 <section id="flexible-learner" class="level2">
 <h2 class="anchored" data-anchor-id="flexible-learner">Flexible learner</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<code>contextmanager</code> removed! Below learner is not the last version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>it is good to understand <code>contextmanager</code> but the code is changed</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Learner():</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls<span class="op">=</span>(<span class="dv">0</span>,), loss_func<span class="op">=</span>F.mse_loss, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD):</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        fc.store_attr()</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@contextmanager</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cb_ctx(<span class="va">self</span>, nm):</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="ss">f'before_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="ss">f'after_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="bu">globals</span>()[<span class="ss">f'Cancel</span><span class="sc">{</span>nm<span class="sc">.</span>title()<span class="sc">}</span><span class="ss">Exception'</span>]: <span class="cf">pass</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>: <span class="va">self</span>.callback(<span class="ss">f'cleanup_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> one_epoch(<span class="va">self</span>, train):</span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model.train(train)</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dl <span class="op">=</span> <span class="va">self</span>.dls.train <span class="cf">if</span> train <span class="cf">else</span> <span class="va">self</span>.dls.valid</span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'epoch'</span>):</span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="va">self</span>.<span class="bu">iter</span>,<span class="va">self</span>.batch <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.dl):</span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'batch'</span>):</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>                    <span class="va">self</span>.predict()</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>                    <span class="va">self</span>.get_loss()</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="va">self</span>.training:</span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.backward()</span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.step()</span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.zero_grad()</span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, n_epochs<span class="op">=</span><span class="dv">1</span>, train<span class="op">=</span><span class="va">True</span>, valid<span class="op">=</span><span class="va">True</span>, cbs<span class="op">=</span><span class="va">None</span>, lr<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># `add_cb` and `rm_cb` were added in lesson 18</span></span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.append(cb)</span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.n_epochs <span class="op">=</span> n_epochs</span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.epochs <span class="op">=</span> <span class="bu">range</span>(n_epochs)</span>
-<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.opt <span class="op">=</span> <span class="va">self</span>.opt_func(<span class="va">self</span>.model.parameters(), <span class="va">self</span>.lr <span class="cf">if</span> lr <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> lr)</span>
-<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'fit'</span>):</span>
-<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="va">self</span>.epoch <span class="kw">in</span> <span class="va">self</span>.epochs:</span>
-<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> train: <span class="va">self</span>.one_epoch(<span class="va">True</span>)</span>
-<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> valid: torch.no_grad()(<span class="va">self</span>.one_epoch)(<span class="va">False</span>)</span>
-<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>:</span>
-<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.remove(cb)</span>
-<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):</span>
-<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">in</span> (<span class="st">'predict'</span>,<span class="st">'get_loss'</span>,<span class="st">'backward'</span>,<span class="st">'step'</span>,<span class="st">'zero_grad'</span>): <span class="cf">return</span> partial(<span class="va">self</span>.callback, name)</span>
-<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">AttributeError</span>(name)</span>
-<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> callback(<span class="va">self</span>, method_nm): run_cbs(<span class="va">self</span>.cbs, method_nm, <span class="va">self</span>)</span>
-<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> training(<span class="va">self</span>): <span class="cf">return</span> <span class="va">self</span>.model.training</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Learner():</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls<span class="op">=</span>(<span class="dv">0</span>,), loss_func<span class="op">=</span>F.mse_loss, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD):</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        fc.store_attr()</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@contextmanager</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cb_ctx(<span class="va">self</span>, nm):</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="ss">f'before_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="ss">f'after_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="bu">globals</span>()[<span class="ss">f'Cancel</span><span class="sc">{</span>nm<span class="sc">.</span>title()<span class="sc">}</span><span class="ss">Exception'</span>]: <span class="cf">pass</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>: <span class="va">self</span>.callback(<span class="ss">f'cleanup_</span><span class="sc">{</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> one_epoch(<span class="va">self</span>, train):</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model.train(train)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dl <span class="op">=</span> <span class="va">self</span>.dls.train <span class="cf">if</span> train <span class="cf">else</span> <span class="va">self</span>.dls.valid</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'epoch'</span>):</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="va">self</span>.<span class="bu">iter</span>,<span class="va">self</span>.batch <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.dl):</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'batch'</span>):</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>                    <span class="va">self</span>.predict()</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>                    <span class="va">self</span>.get_loss()</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="va">self</span>.training:</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.backward()</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.step()</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.zero_grad()</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, n_epochs<span class="op">=</span><span class="dv">1</span>, train<span class="op">=</span><span class="va">True</span>, valid<span class="op">=</span><span class="va">True</span>, cbs<span class="op">=</span><span class="va">None</span>, lr<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># `add_cb` and `rm_cb` were added in lesson 18</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.append(cb)</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.n_epochs <span class="op">=</span> n_epochs</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.epochs <span class="op">=</span> <span class="bu">range</span>(n_epochs)</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.opt <span class="op">=</span> <span class="va">self</span>.opt_func(<span class="va">self</span>.model.parameters(), <span class="va">self</span>.lr <span class="cf">if</span> lr <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> lr)</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="va">self</span>.cb_ctx(<span class="st">'fit'</span>):</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="va">self</span>.epoch <span class="kw">in</span> <span class="va">self</span>.epochs:</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> train: <span class="va">self</span>.one_epoch(<span class="va">True</span>)</span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> valid: torch.no_grad()(<span class="va">self</span>.one_epoch)(<span class="va">False</span>)</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>:</span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.remove(cb)</span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):</span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">in</span> (<span class="st">'predict'</span>,<span class="st">'get_loss'</span>,<span class="st">'backward'</span>,<span class="st">'step'</span>,<span class="st">'zero_grad'</span>): <span class="cf">return</span> partial(<span class="va">self</span>.callback, name)</span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">AttributeError</span>(name)</span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> callback(<span class="va">self</span>, method_nm): run_cbs(<span class="va">self</span>.cbs, method_nm, <span class="va">self</span>)</span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> training(<span class="va">self</span>): <span class="cf">return</span> <span class="va">self</span>.model.training</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TrainCB(Callback):</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_inp<span class="op">=</span><span class="dv">1</span>): <span class="va">self</span>.n_inp <span class="op">=</span> n_inp</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, learn): learn.preds <span class="op">=</span> learn.model(<span class="op">*</span>learn.batch[:<span class="va">self</span>.n_inp])</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_loss(<span class="va">self</span>, learn): learn.loss <span class="op">=</span> learn.loss_func(learn.preds, <span class="op">*</span>learn.batch[<span class="va">self</span>.n_inp:])</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>, learn): learn.loss.backward()</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>, learn): learn.opt.step()</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>, learn): learn.opt.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TrainCB(Callback):</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_inp<span class="op">=</span><span class="dv">1</span>): <span class="va">self</span>.n_inp <span class="op">=</span> n_inp</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, learn): learn.preds <span class="op">=</span> learn.model(<span class="op">*</span>learn.batch[:<span class="va">self</span>.n_inp])</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_loss(<span class="va">self</span>, learn): learn.loss <span class="op">=</span> learn.loss_func(learn.preds, <span class="op">*</span>learn.batch[<span class="va">self</span>.n_inp:])</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>, learn): learn.loss.backward()</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>, learn): learn.opt.step()</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>, learn): learn.opt.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p>NB: I added <code>self.n_inp</code> after the lesson. This allows us to train models with more than one input or output.</p>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProgressCB(Callback):</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> MetricsCB.order<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plot<span class="op">=</span><span class="va">False</span>): <span class="va">self</span>.plot <span class="op">=</span> plot</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>        learn.epochs <span class="op">=</span> <span class="va">self</span>.mbar <span class="op">=</span> master_bar(learn.epochs)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.first <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(learn, <span class="st">'metrics'</span>): learn.metrics._log <span class="op">=</span> <span class="va">self</span>._log</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses <span class="op">=</span> []</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _log(<span class="va">self</span>, d):</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.first:</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.mbar.write(<span class="bu">list</span>(d), table<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.first <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mbar.write(<span class="bu">list</span>(d.values()), table<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_epoch(<span class="va">self</span>, learn): learn.dl <span class="op">=</span> progress_bar(learn.dl, leave<span class="op">=</span><span class="va">False</span>, parent<span class="op">=</span><span class="va">self</span>.mbar)</span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>        learn.dl.comment <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>learn<span class="sc">.</span>loss<span class="sc">:.3f}</span><span class="ss">'</span></span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.plot <span class="kw">and</span> <span class="bu">hasattr</span>(learn, <span class="st">'metrics'</span>) <span class="kw">and</span> learn.training:</span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.losses.append(learn.loss.item())</span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.mbar.update_graph([[fc.L.<span class="bu">range</span>(<span class="va">self</span>.losses), <span class="va">self</span>.losses]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProgressCB(Callback):</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> MetricsCB.order<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, plot<span class="op">=</span><span class="va">False</span>): <span class="va">self</span>.plot <span class="op">=</span> plot</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        learn.epochs <span class="op">=</span> <span class="va">self</span>.mbar <span class="op">=</span> master_bar(learn.epochs)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.first <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(learn, <span class="st">'metrics'</span>): learn.metrics._log <span class="op">=</span> <span class="va">self</span>._log</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses <span class="op">=</span> []</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _log(<span class="va">self</span>, d):</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.first:</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.mbar.write(<span class="bu">list</span>(d), table<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.first <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mbar.write(<span class="bu">list</span>(d.values()), table<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_epoch(<span class="va">self</span>, learn): learn.dl <span class="op">=</span> progress_bar(learn.dl, leave<span class="op">=</span><span class="va">False</span>, parent<span class="op">=</span><span class="va">self</span>.mbar)</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>        learn.dl.comment <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>learn<span class="sc">.</span>loss<span class="sc">:.3f}</span><span class="ss">'</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.plot <span class="kw">and</span> <span class="bu">hasattr</span>(learn, <span class="st">'metrics'</span>) <span class="kw">and</span> learn.training:</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.losses.append(learn.loss.item())</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.mbar.update_graph([[fc.L.<span class="bu">range</span>(<span class="va">self</span>.losses), <span class="va">self</span>.losses]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [TrainCB(), DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>cbs)</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [TrainCB(), DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>cbs)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -649,6 +687,9 @@ check the lesson 16 before check the code
         border: none;
         /* Needs to be in here for Safari polyfill so background images work as expected. */
         background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
     }
     .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
         background: #F44336;
@@ -690,82 +731,112 @@ check the lesson 16 before check the code
 <section id="updated-versions-since-the-lesson" class="level2">
 <h2 class="anchored" data-anchor-id="updated-versions-since-the-lesson">Updated versions since the lesson</h2>
 <p>After the lesson we noticed that <code>contextlib.context_manager</code> has a surprising “feature” which doesn’t let us raise an exception before the <code>yield</code>. Therefore we’ve replaced the context manager with a decorator in this updated version of <code>Learner</code>. We have also added a few more callbacks in <code>one_epoch()</code>.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+with_cbs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>the explanation for this is in Lesson 15 around 1:28, <code>o</code> in the code is I think is <code>self</code> that means Learner Class itself.</p>
+</div>
+</div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> with_cbs:</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nm): <span class="va">self</span>.nm <span class="op">=</span> nm</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, f):</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> _f(o, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                o.callback(<span class="ss">f'before_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>                f(o, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>                o.callback(<span class="ss">f'after_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="bu">globals</span>()[<span class="ss">f'Cancel</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">.</span>title()<span class="sc">}</span><span class="ss">Exception'</span>]: <span class="cf">pass</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">finally</span>: o.callback(<span class="ss">f'cleanup_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> with_cbs:</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nm): <span class="va">self</span>.nm <span class="op">=</span> nm</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, f):</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> _f(o, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(o)</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                o.callback(<span class="ss">f'before_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                f(o, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>                o.callback(<span class="ss">f'after_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="bu">globals</span>()[<span class="ss">f'Cancel</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">.</span>title()<span class="sc">}</span><span class="ss">Exception'</span>]: <span class="cf">pass</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">finally</span>: o.callback(<span class="ss">f'cleanup_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>nm<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Use this learner instead.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the one.</p>
+</div>
+</div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Learner():</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls<span class="op">=</span>(<span class="dv">0</span>,), loss_func<span class="op">=</span>F.mse_loss, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD):</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        fc.store_attr()</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'batch'</span>)</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _one_batch(<span class="va">self</span>):</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.predict()</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.callback(<span class="st">'after_predict'</span>)</span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.get_loss()</span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.callback(<span class="st">'after_loss'</span>)</span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.training:</span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.backward()</span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="st">'after_backward'</span>)</span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.step()</span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="st">'after_step'</span>)</span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.zero_grad()</span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'epoch'</span>)</span>
-<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _one_epoch(<span class="va">self</span>):</span>
-<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="va">self</span>.<span class="bu">iter</span>,<span class="va">self</span>.batch <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.dl): <span class="va">self</span>._one_batch()</span>
-<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> one_epoch(<span class="va">self</span>, training):</span>
-<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model.train(training)</span>
-<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dl <span class="op">=</span> <span class="va">self</span>.dls.train <span class="cf">if</span> training <span class="cf">else</span> <span class="va">self</span>.dls.valid</span>
-<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._one_epoch()</span>
-<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'fit'</span>)</span>
-<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fit(<span class="va">self</span>, train, valid):</span>
-<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="va">self</span>.epoch <span class="kw">in</span> <span class="va">self</span>.epochs:</span>
-<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> train: <span class="va">self</span>.one_epoch(<span class="va">True</span>)</span>
-<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> valid: torch.no_grad()(<span class="va">self</span>.one_epoch)(<span class="va">False</span>)</span>
-<span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, n_epochs<span class="op">=</span><span class="dv">1</span>, train<span class="op">=</span><span class="va">True</span>, valid<span class="op">=</span><span class="va">True</span>, cbs<span class="op">=</span><span class="va">None</span>, lr<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
-<span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># `add_cb` and `rm_cb` were added in lesson 18</span></span>
-<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.append(cb)</span>
-<span id="cb49-38"><a href="#cb49-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb49-39"><a href="#cb49-39" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.n_epochs <span class="op">=</span> n_epochs</span>
-<span id="cb49-40"><a href="#cb49-40" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.epochs <span class="op">=</span> <span class="bu">range</span>(n_epochs)</span>
-<span id="cb49-41"><a href="#cb49-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> lr <span class="kw">is</span> <span class="va">None</span>: lr <span class="op">=</span> <span class="va">self</span>.lr</span>
-<span id="cb49-42"><a href="#cb49-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.opt_func: <span class="va">self</span>.opt <span class="op">=</span> <span class="va">self</span>.opt_func(<span class="va">self</span>.model.parameters(), lr)</span>
-<span id="cb49-43"><a href="#cb49-43" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._fit(train, valid)</span>
-<span id="cb49-44"><a href="#cb49-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>:</span>
-<span id="cb49-45"><a href="#cb49-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.remove(cb)</span>
-<span id="cb49-46"><a href="#cb49-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-47"><a href="#cb49-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):</span>
-<span id="cb49-48"><a href="#cb49-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">in</span> (<span class="st">'predict'</span>,<span class="st">'get_loss'</span>,<span class="st">'backward'</span>,<span class="st">'step'</span>,<span class="st">'zero_grad'</span>): <span class="cf">return</span> partial(<span class="va">self</span>.callback, name)</span>
-<span id="cb49-49"><a href="#cb49-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">AttributeError</span>(name)</span>
-<span id="cb49-50"><a href="#cb49-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-51"><a href="#cb49-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> callback(<span class="va">self</span>, method_nm): run_cbs(<span class="va">self</span>.cbs, method_nm, <span class="va">self</span>)</span>
-<span id="cb49-52"><a href="#cb49-52" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb49-53"><a href="#cb49-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
-<span id="cb49-54"><a href="#cb49-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> training(<span class="va">self</span>): <span class="cf">return</span> <span class="va">self</span>.model.training</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Learner():</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls<span class="op">=</span>(<span class="dv">0</span>,), loss_func<span class="op">=</span>F.mse_loss, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD):</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        fc.store_attr()</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'batch'</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _one_batch(<span class="va">self</span>):</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.predict()</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.callback(<span class="st">'after_predict'</span>)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.get_loss()</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.callback(<span class="st">'after_loss'</span>)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.training:</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.backward()</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="st">'after_backward'</span>)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.step()</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.callback(<span class="st">'after_step'</span>)</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.zero_grad()</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'epoch'</span>)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _one_epoch(<span class="va">self</span>):</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="va">self</span>.<span class="bu">iter</span>,<span class="va">self</span>.batch <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.dl): <span class="va">self</span>._one_batch()</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> one_epoch(<span class="va">self</span>, training):</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model.train(training)</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dl <span class="op">=</span> <span class="va">self</span>.dls.train <span class="cf">if</span> training <span class="cf">else</span> <span class="va">self</span>.dls.valid</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._one_epoch()</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">@with_cbs</span>(<span class="st">'fit'</span>)</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fit(<span class="va">self</span>, train, valid):</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="va">self</span>.epoch <span class="kw">in</span> <span class="va">self</span>.epochs:</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> train: <span class="va">self</span>.one_epoch(<span class="va">True</span>)</span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> valid: torch.no_grad()(<span class="va">self</span>.one_epoch)(<span class="va">False</span>)</span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, n_epochs<span class="op">=</span><span class="dv">1</span>, train<span class="op">=</span><span class="va">True</span>, valid<span class="op">=</span><span class="va">True</span>, cbs<span class="op">=</span><span class="va">None</span>, lr<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>        cbs <span class="op">=</span> fc.L(cbs)</span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># `add_cb` and `rm_cb` were added in lesson 18</span></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.append(cb)</span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.n_epochs <span class="op">=</span> n_epochs</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.epochs <span class="op">=</span> <span class="bu">range</span>(n_epochs)</span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> lr <span class="kw">is</span> <span class="va">None</span>: lr <span class="op">=</span> <span class="va">self</span>.lr</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.opt_func: <span class="va">self</span>.opt <span class="op">=</span> <span class="va">self</span>.opt_func(<span class="va">self</span>.model.parameters(), lr)</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._fit(train, valid)</span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">finally</span>:</span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> cb <span class="kw">in</span> cbs: <span class="va">self</span>.cbs.remove(cb)</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):</span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">in</span> (<span class="st">'predict'</span>,<span class="st">'get_loss'</span>,<span class="st">'backward'</span>,<span class="st">'step'</span>,<span class="st">'zero_grad'</span>): <span class="cf">return</span> partial(<span class="va">self</span>.callback, name)</span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">AttributeError</span>(name)</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> callback(<span class="va">self</span>, method_nm): run_cbs(<span class="va">self</span>.cbs, method_nm, <span class="va">self</span>)</span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> training(<span class="va">self</span>): <span class="cf">return</span> <span class="va">self</span>.model.training</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [TrainCB(), DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>cbs)</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> get_model()</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [TrainCB(), DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(model, dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.2</span>, cbs<span class="op">=</span>cbs)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.Learner object&gt;</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -775,6 +846,9 @@ check the lesson 16 before check the code
         border: none;
         /* Needs to be in here for Safari polyfill so background images work as expected. */
         background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
     }
     .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
         background: #F44336;
@@ -808,37 +882,107 @@ check the lesson 16 before check the code
   </tbody>
 </table>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="09_learner_files/figure-html/cell-42-output-3.png" class="img-fluid"></p>
+<p><img src="09_learner_files/figure-html/cell-42-output-5.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;
+&lt;__main__.Learner object&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="trainlearner-and-momentumlearner" class="level2">
 <h2 class="anchored" data-anchor-id="trainlearner-and-momentumlearner">TrainLearner and MomentumLearner</h2>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TrainLearner(Learner):</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>): <span class="va">self</span>.preds <span class="op">=</span> <span class="va">self</span>.model(<span class="va">self</span>.batch[<span class="dv">0</span>])</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_loss(<span class="va">self</span>): <span class="va">self</span>.loss <span class="op">=</span> <span class="va">self</span>.loss_func(<span class="va">self</span>.preds, <span class="va">self</span>.batch[<span class="dv">1</span>])</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>): <span class="va">self</span>.loss.backward()</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>): <span class="va">self</span>.opt.step()</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>): <span class="va">self</span>.opt.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TrainLearner(Learner):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>): <span class="va">self</span>.preds <span class="op">=</span> <span class="va">self</span>.model(<span class="va">self</span>.batch[<span class="dv">0</span>])</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_loss(<span class="va">self</span>): <span class="va">self</span>.loss <span class="op">=</span> <span class="va">self</span>.loss_func(<span class="va">self</span>.preds, <span class="va">self</span>.batch[<span class="dv">1</span>])</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>): <span class="va">self</span>.loss.backward()</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>): <span class="va">self</span>.opt.step()</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>): <span class="va">self</span>.opt.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MomentumLearner(TrainLearner):</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls, loss_func, lr<span class="op">=</span><span class="va">None</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD, mom<span class="op">=</span><span class="fl">0.85</span>):</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mom <span class="op">=</span> mom</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(model, dls, loss_func, lr, cbs, opt_func)</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>):</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> p <span class="kw">in</span> <span class="va">self</span>.model.parameters(): p.grad <span class="op">*=</span> <span class="va">self</span>.mom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MomentumLearner(TrainLearner):</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model, dls, loss_func, lr<span class="op">=</span><span class="va">None</span>, cbs<span class="op">=</span><span class="va">None</span>, opt_func<span class="op">=</span>optim.SGD, mom<span class="op">=</span><span class="fl">0.85</span>):</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mom <span class="op">=</span> mom</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(model, dls, loss_func, lr, cbs, opt_func)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> zero_grad(<span class="va">self</span>):</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> p <span class="kw">in</span> <span class="va">self</span>.model.parameters(): p.grad <span class="op">*=</span> <span class="va">self</span>.mom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NB: No TrainCB</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span>cbs)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NB: No TrainCB</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> MetricsCB(accuracy<span class="op">=</span>MulticlassAccuracy())</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB(), metrics, ProgressCB(plot<span class="op">=</span><span class="va">True</span>)]</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">0.1</span>, cbs<span class="op">=</span>cbs)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -889,76 +1033,76 @@ check the lesson 16 before check the code
 <section id="lrfindercb" class="level2">
 <h2 class="anchored" data-anchor-id="lrfindercb">LRFinderCB</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LRFinderCB(Callback):</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, lr_mult<span class="op">=</span><span class="fl">1.3</span>): fc.store_attr()</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs,<span class="va">self</span>.losses <span class="op">=</span> [],[]</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> math.inf</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> learn.training: <span class="cf">raise</span> CancelEpochException()</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs.append(learn.opt.param_groups[<span class="dv">0</span>][<span class="st">'lr'</span>])</span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> to_cpu(learn.loss)</span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses.append(loss)</span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&lt;</span> <span class="va">self</span>.<span class="bu">min</span>: <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> loss</span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&gt;</span> <span class="va">self</span>.<span class="bu">min</span><span class="op">*</span><span class="dv">3</span>: <span class="cf">raise</span> CancelFitException()</span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> g <span class="kw">in</span> learn.opt.param_groups: g[<span class="st">'lr'</span>] <span class="op">*=</span> <span class="va">self</span>.lr_mult</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LRFinderCB(Callback):</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, lr_mult<span class="op">=</span><span class="fl">1.3</span>): fc.store_attr()</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs,<span class="va">self</span>.losses <span class="op">=</span> [],[]</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> math.inf</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> learn.training: <span class="cf">raise</span> CancelEpochException()</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs.append(learn.opt.param_groups[<span class="dv">0</span>][<span class="st">'lr'</span>])</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> to_cpu(learn.loss)</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses.append(loss)</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&lt;</span> <span class="va">self</span>.<span class="bu">min</span>: <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> loss</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&gt;</span> <span class="va">self</span>.<span class="bu">min</span><span class="op">*</span><span class="dv">3</span>: <span class="cf">raise</span> CancelFitException()</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> g <span class="kw">in</span> learn.opt.param_groups: g[<span class="st">'lr'</span>] <span class="op">*=</span> <span class="va">self</span>.lr_mult</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>lrfind <span class="op">=</span> LRFinderCB()</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB(), lrfind]</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">1e-4</span>, cbs<span class="op">=</span>cbs)</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>plt.plot(lrfind.lrs, lrfind.losses)</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>lrfind <span class="op">=</span> LRFinderCB()</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB(), lrfind]</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">1e-4</span>, cbs<span class="op">=</span>cbs)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">1</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>plt.plot(lrfind.lrs, lrfind.losses)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="09_learner_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim.lr_scheduler <span class="im">import</span> ExponentialLR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim.lr_scheduler <span class="im">import</span> ExponentialLR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p><a href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.ExponentialLR.html#torch.optim.lr_scheduler.ExponentialLR">ExponentialLR</a></p>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LRFinderCB(Callback):</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, gamma<span class="op">=</span><span class="fl">1.3</span>, max_mult<span class="op">=</span><span class="dv">3</span>): fc.store_attr()</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sched <span class="op">=</span> ExponentialLR(learn.opt, <span class="va">self</span>.gamma)</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs,<span class="va">self</span>.losses <span class="op">=</span> [],[]</span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> math.inf</span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> learn.training: <span class="cf">raise</span> CancelEpochException()</span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs.append(learn.opt.param_groups[<span class="dv">0</span>][<span class="st">'lr'</span>])</span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> to_cpu(learn.loss)</span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses.append(loss)</span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&lt;</span> <span class="va">self</span>.<span class="bu">min</span>: <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> loss</span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> math.isnan(loss) <span class="kw">or</span> (loss <span class="op">&gt;</span> <span class="va">self</span>.<span class="bu">min</span><span class="op">*</span><span class="va">self</span>.max_mult):</span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> CancelFitException()</span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sched.step()</span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cleanup_fit(<span class="va">self</span>, learn):</span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>        plt.plot(<span class="va">self</span>.lrs, <span class="va">self</span>.losses)</span>
-<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>        plt.xscale(<span class="st">'log'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LRFinderCB(Callback):</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, gamma<span class="op">=</span><span class="fl">1.3</span>, max_mult<span class="op">=</span><span class="dv">3</span>): fc.store_attr()</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_fit(<span class="va">self</span>, learn):</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sched <span class="op">=</span> ExponentialLR(learn.opt, <span class="va">self</span>.gamma)</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs,<span class="va">self</span>.losses <span class="op">=</span> [],[]</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> math.inf</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> after_batch(<span class="va">self</span>, learn):</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> learn.training: <span class="cf">raise</span> CancelEpochException()</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lrs.append(learn.opt.param_groups[<span class="dv">0</span>][<span class="st">'lr'</span>])</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> to_cpu(learn.loss)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.losses.append(loss)</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loss <span class="op">&lt;</span> <span class="va">self</span>.<span class="bu">min</span>: <span class="va">self</span>.<span class="bu">min</span> <span class="op">=</span> loss</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> math.isnan(loss) <span class="kw">or</span> (loss <span class="op">&gt;</span> <span class="va">self</span>.<span class="bu">min</span><span class="op">*</span><span class="va">self</span>.max_mult):</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> CancelFitException()</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sched.step()</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cleanup_fit(<span class="va">self</span>, learn):</span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>        plt.plot(<span class="va">self</span>.lrs, <span class="va">self</span>.losses)</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>        plt.xscale(<span class="st">'log'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB()]</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">1e-5</span>, cbs<span class="op">=</span>cbs)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">3</span>, cbs<span class="op">=</span>LRFinderCB())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>cbs <span class="op">=</span> [DeviceCB()]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> MomentumLearner(get_model(), dls, F.cross_entropy, lr<span class="op">=</span><span class="fl">1e-5</span>, cbs<span class="op">=</span>cbs)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>learn.fit(<span class="dv">3</span>, cbs<span class="op">=</span>LRFinderCB())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="09_learner_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="at">@fc.patch</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lr_find(<span class="va">self</span>:Learner, gamma<span class="op">=</span><span class="fl">1.3</span>, max_mult<span class="op">=</span><span class="dv">3</span>, start_lr<span class="op">=</span><span class="fl">1e-5</span>, max_epochs<span class="op">=</span><span class="dv">10</span>):</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.fit(max_epochs, lr<span class="op">=</span>start_lr, cbs<span class="op">=</span>LRFinderCB(gamma<span class="op">=</span>gamma, max_mult<span class="op">=</span>max_mult))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="at">@fc.patch</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lr_find(<span class="va">self</span>:Learner, gamma<span class="op">=</span><span class="fl">1.3</span>, max_mult<span class="op">=</span><span class="dv">3</span>, start_lr<span class="op">=</span><span class="fl">1e-5</span>, max_epochs<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.fit(max_epochs, lr<span class="op">=</span>start_lr, cbs<span class="op">=</span>LRFinderCB(gamma<span class="op">=</span>gamma, max_mult<span class="op">=</span>max_mult))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
 <p><code>lr_find</code> was added in lesson 18. It’s just a shorter way of using <code>LRFinderCB</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>MomentumLearner(get_model(), dls, F.cross_entropy, cbs<span class="op">=</span>cbs).lr_find()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>MomentumLearner(get_model(), dls, F.cross_entropy, cbs<span class="op">=</span>cbs).lr_find()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="09_learner_files/figure-html/cell-52-output-1.png" class="img-fluid"></p>
 </div>
@@ -967,7 +1111,7 @@ check the lesson 16 before check the code
 <section id="export--" class="level2">
 <h2 class="anchored" data-anchor-id="export--">Export -</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.nbdev_export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.nbdev_export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
